@@ -1,25 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import TodoForm from './TodoForm';
+import TodoItems from './TodoItems';
+import ExportExcel from './Excelexport';
 
-function App() {
+const STORAGE_KEY = 'TodoKey1337';
+
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  
+
+  useEffect(() => {
+   
+    const storedTodos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    console.log('Stored Todos from localStorage:', storedTodos);
+    setTodos(storedTodos);
+  }, []);
+  
+  useEffect(() => {
+   
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
+  
+
+  
+
+  const handleAddTodo = (newTodo) => {
+    setTodos((prevTodos) => [...prevTodos, { id: Date.now(), ...newTodo }]);
+  };
+
+  const handleToggleComplete = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const handleDelete = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
+
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      const storedTodos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      console.log('Page loaded - Stored Todos from localStorage:', storedTodos);
+      setTodos(storedTodos);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TodoForm handleAddTodo={handleAddTodo} />
+      <TodoItems
+        todoList={todos}
+        handleToggleComplete={handleToggleComplete}
+        handleDelete={handleDelete}
+      
+      />
+    
+      
     </div>
   );
-}
+};
 
 export default App;
