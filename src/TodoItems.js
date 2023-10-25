@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 
 const TodoItems = ({ todoList, handleToggleComplete, handleDelete }) => {
   return (
-    <div>
+    <>
       {todoList.map((todo) => (
         <TodoItem
           key={todo.id}
@@ -13,7 +13,7 @@ const TodoItems = ({ todoList, handleToggleComplete, handleDelete }) => {
           handleDelete={handleDelete}
         />
       ))}
-    </div>
+    </>
   );
 };
 

@@ -14,23 +14,30 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  width: 100%;
-  max-width: 400px; /* Anpassa max-bredden efter behov */
+  justify-content: space-between;
+  
+  height: 60vh;
+  max-width: 60vw; /* Anpassa max-bredden efter behov */
 }
 
 /* TodoItem.css */
 .todo-item {
   padding: 16px;
+  border-radius: 8px;
   border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+#root{
+  background-color: #dddcff;
+  max-width: 60vw;
 
+}
 .complete {
-  color: #28a745;
-  outline-style: double;
-  padding: 4px;
+  color: #5ece78;
+  outline-style: dotted;
+  padding: 8px;
 }
 
 /* TodoForm.css */
@@ -38,7 +45,7 @@ body {
   padding: 16px;
   display: flex;
   flex-direction: column; /* Ändra riktningen på kolumn för mobil */
-  align-items: stretch;
+  align-items: align-items;
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
 }
@@ -55,12 +62,14 @@ body {
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 8px;
+  margin: 6px;
   cursor: pointer;
 }
 
 
 footer {
-  position:relative;
+  position:absolute;
+  padding-top: 20px;
   bottom:0;
+  height: 10vh;
   }

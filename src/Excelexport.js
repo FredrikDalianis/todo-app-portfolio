@@ -18,11 +18,11 @@ const ExportExcel =({excelData, fileName}) =>{
 
 
 return(
-    <div>
+    <>
     <button onClick={exportToExcel}>
-        Export
+        Export to Excel file.
     </button>
-    </div>
+    </>
 );
 }
 

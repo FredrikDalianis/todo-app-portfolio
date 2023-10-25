@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TodoForm from './TodoForm';
 import TodoItems from './TodoItems';
 import ExportExcel from './Excelexport';
-
+import './App.css';
 const STORAGE_KEY = 'TodoKey1337';
 
 const App = () => {
@@ -50,7 +50,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <TodoForm handleAddTodo={handleAddTodo} />
       <TodoItems
         todoList={todos}
@@ -60,7 +60,7 @@ const App = () => {
       />
     
       
-    </div>
+    </>
   );
 };
 
