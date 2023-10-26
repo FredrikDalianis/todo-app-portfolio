@@ -14,7 +14,11 @@ const TodoItem = ({ todo, handleToggleComplete, handleDelete }) => {
 
         <tbody>
           <tr>
-            <td></td>
+            <td>
+              <input type="checkbox" id="checkbox-done" onChange={()=> handleToggleComplete(id)} />
+              
+            </td>
+            
             <td>{text}</td>
             <td>{date}</td>
           </tr>
